@@ -252,6 +252,16 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UPM.DAL\UPM.DAL.csproj">
+      <Project>{6ce611e3-81bc-4103-8e30-43e76fee2d0c}</Project>
+      <Name>UPM.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPM.Entities\UPM.Entities.csproj">
+      <Project>{30b4394d-071c-4925-89fb-84835036d309}</Project>
+      <Name>UPM.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

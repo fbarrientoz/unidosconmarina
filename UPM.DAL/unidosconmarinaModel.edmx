@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UnidosconmarinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Banners">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url_foto" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="bit" />
+          <Property Name="link" Type="varbinary" MaxLength="250" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
+          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
+          <Property Name="fechaRegistro" Type="date" />
+          <Property Name="fechaupdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="lugar" Type="varchar" MaxLength="250" />
+          <Property Name="latitud" Type="varchar" MaxLength="250" />
+          <Property Name="longitud" Type="varchar" MaxLength="250" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="fotoDefault" Type="varchar" MaxLength="250" />
+          <Property Name="urlEvento" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="bit" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
+          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
+          <Property Name="fechaRegistro" Type="date" />
+          <Property Name="fechaUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="HistorialContacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comentario" Type="varchar" MaxLength="250" />
+          <Property Name="FkPadron" Type="int" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
+          <Property Name="fechaupdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Noticias">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="1500" Nullable="false" />
+          <Property Name="lugar" Type="varchar" MaxLength="250" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="fotoDefault" Type="varchar" MaxLength="250" />
+          <Property Name="estatus" Type="bit" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
+          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
+          <Property Name="fechaRegistro" Type="date" />
+          <Property Name="fechaUpdate" Type="date" />
+        </EntityType>
+        <EntityType Name="Padron">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="paterno" Type="varchar" MaxLength="50" />
+          <Property Name="materno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="celular" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="varchar" MaxLength="150" />
+          <Property Name="comentario" Type="varchar" MaxLength="250" />
+          <Property Name="rfc" Type="varchar" MaxLength="50" />
+          <Property Name="curp" Type="varchar" MaxLength="50" />
+          <Property Name="claveElectoral" Type="varchar" MaxLength="50" />
+          <Property Name="votante" Type="bit" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
+          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
+          <Property Name="fechaRegistro" Type="date" />
+          <Property Name="fechaUpdate" Type="date" />
+        </EntityType>
+        <Association Name="FK_HistorialContacto_Padron">
+          <End Role="Padron" Type="Self.Padron" Multiplicity="1" />
+          <End Role="HistorialContacto" Type="Self.HistorialContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Padron">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialContacto">
+              <PropertyRef Name="FkPadron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnidosconmarinaModelStoreContainer">
+          <EntitySet Name="Banners" EntityType="Self.Banners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistorialContacto" EntityType="Self.HistorialContacto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Padron" EntityType="Self.Padron" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HistorialContacto_Padron" Association="Self.FK_HistorialContacto_Padron">
+            <End Role="Padron" EntitySet="Padron" />
+            <End Role="HistorialContacto" EntitySet="HistorialContacto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnidosconmarinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url_foto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <Property Name="link" Type="Binary" MaxLength="250" FixedLength="false" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="fechaupdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lugar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="latitud" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fotoDefault" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="urlEvento" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="fechaUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="HistorialContacto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FkPadron" Type="Int32" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="fechaupdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Padron" Relationship="Self.FK_HistorialContacto_Padron" FromRole="HistorialContacto" ToRole="Padron" />
+        </EntityType>
+        <EntityType Name="Noticia">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titulo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lugar" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fotoDefault" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="estatus" Type="Boolean" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="fechaUpdate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Padron">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="rfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="curp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="claveElectoral" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="votante" Type="Boolean" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
+          <Property Name="fechaUpdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="HistorialContactoes" Relationship="Self.FK_HistorialContacto_Padron" FromRole="Padron" ToRole="HistorialContacto" />
+        </EntityType>
+        <Association Name="FK_HistorialContacto_Padron">
+          <End Role="Padron" Type="Self.Padron" Multiplicity="1" />
+          <End Role="HistorialContacto" Type="Self.HistorialContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Padron">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialContacto">
+              <PropertyRef Name="FkPadron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnidosconmarinaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banners" EntityType="Self.Banner" />
+          <EntitySet Name="Eventos" EntityType="Self.Evento" />
+          <EntitySet Name="HistorialContactoes" EntityType="Self.HistorialContacto" />
+          <EntitySet Name="Noticias" EntityType="Self.Noticia" />
+          <EntitySet Name="Padrons" EntityType="Self.Padron" />
+          <AssociationSet Name="FK_HistorialContacto_Padron" Association="Self.FK_HistorialContacto_Padron">
+            <End Role="Padron" EntitySet="Padrons" />
+            <End Role="HistorialContacto" EntitySet="HistorialContactoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnidosconmarinaModelStoreContainer" CdmEntityContainer="UnidosconmarinaEntities">
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.Banner">
+              <MappingFragment StoreEntitySet="Banners">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="url_foto" ColumnName="url_foto" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="usuarioUpdate" ColumnName="usuarioUpdate" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaupdate" ColumnName="fechaupdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.Evento">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fotoDefault" ColumnName="fotoDefault" />
+                <ScalarProperty Name="urlEvento" ColumnName="urlEvento" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="usuarioUpdate" ColumnName="usuarioUpdate" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaUpdate" ColumnName="fechaUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialContactoes">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.HistorialContacto">
+              <MappingFragment StoreEntitySet="HistorialContacto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="FkPadron" ColumnName="FkPadron" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="fechaupdate" ColumnName="fechaupdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Noticias">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.Noticia">
+              <MappingFragment StoreEntitySet="Noticias">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="fotoDefault" ColumnName="fotoDefault" />
+                <ScalarProperty Name="estatus" ColumnName="estatus" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="usuarioUpdate" ColumnName="usuarioUpdate" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaUpdate" ColumnName="fechaUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Padrons">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.Padron">
+              <MappingFragment StoreEntitySet="Padron">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="paterno" ColumnName="paterno" />
+                <ScalarProperty Name="materno" ColumnName="materno" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="celular" ColumnName="celular" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="rfc" ColumnName="rfc" />
+                <ScalarProperty Name="curp" ColumnName="curp" />
+                <ScalarProperty Name="claveElectoral" ColumnName="claveElectoral" />
+                <ScalarProperty Name="votante" ColumnName="votante" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="usuarioUpdate" ColumnName="usuarioUpdate" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="fechaUpdate" ColumnName="fechaUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webadmin", "webadmin\webadm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "website", "website\website.csproj", "{93BCC308-7BB7-4622-900E-609A823DE76C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM.DAL", "UPM.DAL\UPM.DAL.csproj", "{6CE611E3-81BC-4103-8E30-43E76FEE2D0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPM.Entities", "UPM.Entities\UPM.Entities.csproj", "{30B4394D-071C-4925-89FB-84835036D309}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{93BCC308-7BB7-4622-900E-609A823DE76C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93BCC308-7BB7-4622-900E-609A823DE76C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93BCC308-7BB7-4622-900E-609A823DE76C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE611E3-81BC-4103-8E30-43E76FEE2D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE611E3-81BC-4103-8E30-43E76FEE2D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE611E3-81BC-4103-8E30-43E76FEE2D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE611E3-81BC-4103-8E30-43E76FEE2D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B4394D-071C-4925-89FB-84835036D309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B4394D-071C-4925-89FB-84835036D309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B4394D-071C-4925-89FB-84835036D309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B4394D-071C-4925-89FB-84835036D309}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
