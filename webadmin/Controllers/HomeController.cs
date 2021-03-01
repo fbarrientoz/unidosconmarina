@@ -10,7 +10,15 @@ namespace webadmin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+
+            if (Request.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return View("~/Views/Account/Login.cshtml");
+            }
         }
 
         public ActionResult About()

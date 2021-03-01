@@ -29,5 +29,15 @@ namespace webadmin.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<UPM.Entities.Padron> Padrons { get; set; }
+
+       // public System.Data.Entity.DbSet<UPM.Entities.Evento> Eventoes { get; set; }
+
+       // public System.Data.Entity.DbSet<UPM.Entities.HistorialContacto> HistorialContactoes { get; set; }
+
+        //public System.Data.Entity.DbSet<UPM.Entities.Noticia> Noticias { get; set; }
+
+        //public System.Data.Entity.DbSet<UPM.Entities.Banner> Banners { get; set; }
     }
 }

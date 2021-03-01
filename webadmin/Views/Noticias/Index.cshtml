@@ -1,0 +1,87 @@
+﻿@model IEnumerable<UPM.Entities.Noticia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lugar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fotoDefault)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarioRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarioUpdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaUpdate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lugar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fotoDefault)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuarioRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuarioUpdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaUpdate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

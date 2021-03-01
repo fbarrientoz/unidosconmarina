@@ -1,0 +1,117 @@
+﻿@model IEnumerable<UPM.Entities.Padron>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.materno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rfc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.claveElectoral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.votante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarioRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuarioUpdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaUpdate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.materno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.celular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rfc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.claveElectoral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.votante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuarioRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuarioUpdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaRegistro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaUpdate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

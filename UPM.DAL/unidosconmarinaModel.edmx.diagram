@@ -11,6 +11,14 @@
         <EntityTypeShape EntityType="UnidosconmarinaModel.Noticia" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UnidosconmarinaModel.Padron" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_HistorialContacto_Padron" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="8.75" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.AspNetRole" Width="1.5" PointX="8.375" PointY="2.5" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.AspNetUserClaim" Width="1.5" PointX="12.875" PointY="3.625" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.AspNetUserLogin" Width="1.5" PointX="12.875" PointY="1" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.AspNetUser" Width="1.5" PointX="10.625" PointY="1.375" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="UnidosconmarinaModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
