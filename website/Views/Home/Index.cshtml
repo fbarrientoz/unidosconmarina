@@ -1,31 +1,331 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+         <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+        @*<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>*@ 
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Content/img/marina-red-juvenil-snte.png" class="d-block w-100" alt="...">
+        </div>
+         <div class="carousel-item">
+          <img src="~/Content/img/red-juvenil-bc.jpeg" class="d-block w-100" alt="...">
+        </div>
+        @*<div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="...">
+        </div>*@ 
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
 </div>
+<br>
+<section>
+    <div class="container">
+        <h1>Save us</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+<br>
+<section class="section-story">
+    <br>
+    <div class="container">
+        <h1>Our Historys</h1>
+        <BR>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="assets/img/image-h.PNG" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Title Story</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Change a life</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 story-p">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img style="width:70px; height:70px;" src="assets/img/card.PNG">
+                    </div>
+                    <div class="col-md-10">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A excepturi quod animi tempore</p>
+                    </div>
+                </div>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+                <div class="row">
+                    <div class="col-md-2">
+
+
+                        <img style="width:70px; height:70px;" src="assets/img/card.PNG">
+
+                    </div>
+                    <div class="col-md-10">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A excepturi quod animi tempore</p>
+                    </div>
+                </div>
+                <hr style="margin-top:10px; margin-bottom:10px;">
+                <div class="row">
+                    <div class="col-md-2">
+
+                        <img style="width:70px; height:70px;" src="assets/img/card.PNG">
+                    </div>
+                    <div class="col-md-10">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A excepturi quod animi tempore</p>
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
     </div>
+    <br>
+</section>
+<br>
+<section>
+    <div class="container">
+        <h1>Doggies waiting to being adopted</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Dog Name</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <button class="btn btn-adopt" type="submit">Adopt</button>
+                        <button class="btn btn-donate" type="submit">Donate</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <br>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+<br>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+        <!-- <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li> -->
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="assets/img/donate-banner.PNG" class="d-block w-100" alt="...">
+        </div>
+        <!-- <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="..." class="d-block w-100" alt="...">
+        </div> -->
+    </div>
+
 </div>
+<br>
+<br>
+<section>
+    <div class="container">
+        <h1>Join with us and help a doggie</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Be a doggie sitter</h5>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Donate to a association</h5>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="assets/img/card.PNG" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Are you of a help group?</h5>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+
+
+    </div>
+    <br>
+
+</section>
+<br>
+<section>
+    <div class="container">
+        <h1>Report a doggie</h1>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-danger">Report</button>
+        </div>
+    </div>
+</section>
+<br>
