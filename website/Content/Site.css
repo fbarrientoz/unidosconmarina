@@ -1,24 +1,93 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* Paleta de colores */
+/* #D2D2D2 Gray */
+/* #112025 azul marin */
+/* #FDC161 amarillo */
+/* #EFF0F4 gray bajito */
+/* #16BAC6 azul turquesa */
+/* #6B7275  azul negro*/
+/* #195F6B AZUL VERDE */
+
+
+
+
+.menu-style {
+    background-color: #8e0808;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    .menu-style li a {
+        color: #EFF0F4 !important;
+        font-weight: 500 !important;
+    }
+
+    .menu-style li > :hover {
+        background-color: #690404 !important;
+        color: #EFF0F4;
+        font-weight: 500;
+    }
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+    .btn:hover {
+        font-size: 15px;
+    }
+
+.btn-donate {
+    background-color: #195F6B !important;
+    border-radius: 20px !important;
+    color: white !important;
+    font-weight: 800 !important;
+    min-width: 100px !important;
+    min-height: 42px !important;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    .btn-donate:hover {
+        background-color: #13424b !important;
+    }
+
+.btn-adopt {
+    background-color: #FDC161 !important;
+    border-radius: 20px !important;
+    color: #195F6B !important;
+    font-weight: 800 !important;
+    min-width: 100px !important;
+    min-height: 42px !important;
 }
+
+    .btn-adopt:hover {
+        background-color: #f0b14c !important;
+    }
+
+.section-story {
+    background-color: #195F6B;
+    color: aliceblue;
+}
+
+    .section-story h1 {
+        color: white;
+    }
+
+
+    .section-story .story-p {
+        color: #EFF0F4;
+        font-weight: 500;
+    }
