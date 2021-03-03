@@ -72,10 +72,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="url_foto" Type="varchar" MaxLength="250" />
-          <Property Name="estatus" Type="bit" />
+          <Property Name="estatus" Type="bit" Nullable="false" />
           <Property Name="link" Type="varbinary" MaxLength="250" />
-          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
-          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="128" />
+          <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="128" />
           <Property Name="fechaRegistro" Type="date" />
           <Property Name="fechaupdate" Type="date" />
         </EntityType>
@@ -145,6 +145,30 @@
           <Property Name="fechaRegistro" Type="date" />
           <Property Name="fechaUpdate" Type="date" />
         </EntityType>
+        <Association Name="FK_Banners_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Banners" Type="Self.Banners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banners">
+              <PropertyRef Name="usuarioRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banners_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Banners" Type="Self.Banners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banners">
+              <PropertyRef Name="usuarioUpdate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -225,6 +249,14 @@
           <EntitySet Name="HistorialContacto" EntityType="Self.HistorialContacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Padron" EntityType="Self.Padron" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Banners_AspNetUsers" Association="Self.FK_Banners_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Banners" EntitySet="Banners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banners_AspNetUsers1" Association="Self.FK_Banners_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Banners" EntitySet="Banners" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -256,12 +288,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="url_foto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="estatus" Type="Boolean" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
           <Property Name="link" Type="Binary" MaxLength="250" FixedLength="false" />
-          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="usuarioUpdate" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
           <Property Name="fechaupdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AspNetUser" Relationship="UnidosconmarinaModel.FK_Banners_AspNetUsers" FromRole="Banner" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="UnidosconmarinaModel.FK_Banners_AspNetUsers1" FromRole="Banner" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="Evento">
           <Key>
@@ -370,6 +404,14 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Banners_AspNetUsers" Association="UnidosconmarinaModel.FK_Banners_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Banner" EntitySet="Banners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Banners_AspNetUsers1" Association="UnidosconmarinaModel.FK_Banners_AspNetUsers1">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Banner" EntitySet="Banners" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -429,6 +471,8 @@
           <NavigationProperty Name="AspNetUserClaims" Relationship="UnidosconmarinaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="UnidosconmarinaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="UnidosconmarinaModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="Banners" Relationship="UnidosconmarinaModel.FK_Banners_AspNetUsers" FromRole="AspNetUser" ToRole="Banner" />
+          <NavigationProperty Name="Banners1" Relationship="UnidosconmarinaModel.FK_Banners_AspNetUsers1" FromRole="AspNetUser" ToRole="Banner" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -461,6 +505,30 @@
         <Association Name="AspNetUserRoles">
           <End Type="UnidosconmarinaModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Banners_AspNetUsers">
+          <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="UnidosconmarinaModel.Banner" Role="Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banner">
+              <PropertyRef Name="usuarioRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Banners_AspNetUsers1">
+          <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="UnidosconmarinaModel.Banner" Role="Banner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Banner">
+              <PropertyRef Name="usuarioUpdate" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>

@@ -19,6 +19,8 @@
         <AssociationConnector Association="UnidosconmarinaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="UnidosconmarinaModel.AspNetUserRoles" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_Banners_AspNetUsers" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_Banners_AspNetUsers1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

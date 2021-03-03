@@ -48,16 +48,31 @@ namespace webadmin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,url_foto,estatus,link,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaupdate")] Banner banner)
+        public ActionResult Create([Bind(Include = "Id,url_foto,estatus,link,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaupdate")] Banner banner, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (Request.IsAuthenticated)
             {
-                db.Banners.Add(banner);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
 
-            return View(banner);
+                    if (file != null)
+                    {
+                        string NombreArchivo = System.IO.Path.GetFileName(file.FileName);
+                        string physicalPath = Server.MapPath("~/Content/images/banners/" + NombreArchivo);
+                        file.SaveAs(physicalPath);
+                        banner.url_foto = NombreArchivo;
+
+                    }
+                    db.Banners.Add(banner);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(banner);
+            } 
+            else
+            {
+                return View("~/Views/Account/Login.cshtml");
+            }
         }
 
         // GET: Banners/Edit/5
