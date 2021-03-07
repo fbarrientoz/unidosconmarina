@@ -6442,6 +6442,7 @@
     <Folder Include="assets\media\products\" />
     <Folder Include="assets\media\users\" />
     <Folder Include="Content\images\banners\" />
+    <Folder Include="Content\images\noticias\" />
     <Folder Include="Views\Eventoes\" />
     <Folder Include="Views\HistorialContactoes\" />
   </ItemGroup>

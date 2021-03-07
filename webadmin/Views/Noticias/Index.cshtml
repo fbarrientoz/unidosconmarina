@@ -4,84 +4,218 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.lugar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fotoDefault)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usuarioRegistro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.usuarioUpdate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaRegistro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaUpdate)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.lugar)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fotoDefault)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.usuarioRegistro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.usuarioUpdate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaRegistro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaUpdate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
 }
 
-</table>
+
+<div>
+
+    <input type="hidden" id="hView" value='@ViewContext.RouteData.Values["controller"].ToString()' />
+</div>
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            Cátalogos
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="@Url.Action("Index", "Noticias")" class="kt-subheader__breadcrumbs-link">
+                Noticiass
+            </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="@Url.Action("Index", "Noticias")" class="kt-subheader__breadcrumbs-link">
+                Listado
+            </a>
+
+        </div>
+    </div>
+
+</div>
+<!-- end:: Subheader -->
+<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+    <div class="kt-portlet kt-portlet--mobile">
+
+        <div class="kt-portlet__body">
+            <div class="kt-portlet__head-toolbar">
+                <div class="kt-portlet__head-wrapper">
+                    <div class="kt-portlet__head-actions" style="text-align:right">
+
+                        <a href="@Url.Action("Create", "Noticias")" class="btn btn-brand btn-elevate btn-icon-sm">
+                            <i class="la la-plus"></i>
+                            Agregar Noticias
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <!--begin: Datatable -->
+                <table class="dataTable table table-striped- table-bordered table-hover table-checkable no-wrap display" data-order="[[2, &quot;asc&quot;]]">
+                    <thead>
+                        <tr>
+                            <th></th>
+
+                            <th data-orderable="false" data-searchable="false" data-visible="false">ID</th>
+                            <th class="all">Fotografía</th>
+                            <th class="all">Titulo</th>
+                            <th class="all">Publicación</th>
+                            <th class="all">Fecha de Noticia</th>
+                            <th class="all">Actualización</th>
+                            <th class="all">Editar</th>
+                            <th class="all">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td></td>
+                            <td data-info="ID">
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
+                            <td data-info="Fotografía">
+                                <div class="fileinput-new img-thumbnail">
+                                    <img src="~/Content/images/noticias/@Html.DisplayFor(modelItem => item.fotoDefault)" alt="..." style="width:100%; height:100%;">
+                                </div>
+                            </td>
+                            <td data-info="Titulo">
+                                @Html.DisplayFor(modelItem => item.titulo)
+                                @Html.ValidationMessageFor(modelItem => item.titulo, "", new { @class = "text-danger" })
+                            </td>
+                            <td data-info="activacion">
+                                @Html.LabelFor(modelItem => item.estatus, "Se publica?", htmlAttributes: new { @class = "control-label" })
+                                @Html.DisplayFor(modelItem => item.estatus)
+                                @Html.ValidationMessageFor(modelItem => item.estatus, "", new { @class = "text-danger" })
+                            </td>
+                            <td data-info="Fecha noticia">
+                                @Convert.ToDateTime(item.fecha).ToString("dd/MM/yyyy")
+                            </td>
+                            <td data-info="Actualización">
+
+                                @if (item.fechaUpdate != null)
+                                {
+                                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)<br />
+                                    @Convert.ToDateTime(item.fechaRegistro).ToString("dd/MM/yyyy")
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.AspNetUser1.Email)<br />
+                                    @Convert.ToDateTime(item.fechaUpdate).ToString("dd/MM/yyyy")
+                                }
+
+
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Noticias", new { id = item.id })">
+                                    <span class="fa fa-edit fa-lg" aria-hidden="true"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <span class="fa fa-trash fa-lg" aria-hidden="true" onclick="openModalEliminar(@item.id)"></span>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <!--end: Datatable -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddEliminar" tabindex="-1" role="dialog" aria-labelledby="modalAddEliminar" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Elemento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmFEliminar" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <input type="hidden" name="id" id="id" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <h5>¿Estas seguro que deseas eliminar este Noticia?</h5>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnFinalizarEvaluacion" type="button" class="btn btn-primary" onclick="eliminar('@Url.Action("EliminarAsync", "Noticias")');">Finalizar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function eliminar(url) {
+        Swal.fire({
+            title: 'Procesando!',
+            html: '',
+            onBeforeOpen: () => {
+                Swal.showLoading()
+                return new Promise((resolve) => {
+                    var formData = new FormData($('form#frmFEliminar')[0]);
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: formData,
+                        dataType: 'json',
+                        contentType: false,// "multipart/form-data",
+                        processData: false,
+                        success: function (result) {
+                            if (result.accion) {
+                                Swal.fire({
+                                    title: 'Realizado!',
+                                    text: 'Se ha eliminado correctamente',
+                                    type: 'success',
+                                    onClose: () => {
+                                        window.location.reload();
+                                    }
+                                });
+                            }
+                            else
+                                Swal.fire('Ops!','No se puede eliminar la noticia.', 'error');
+                        },
+                        error: function (error) {
+                            Swal.fire('Ops!', 'No se puede eliminar la noticia.', 'error');
+                        }
+                    });
+
+                })
+            },
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire({
+                    title: 'Realizado!',
+                    text: 'Se ha eliminado correctamente',
+                    type: 'success',
+                    onClose: () => {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function openModalEliminar(id) {
+        var modal = $('#modalAddEliminar');
+        modal.find('form')[0].reset();
+        modal.find('input#id').val(id);
+        modal.modal('show');
+    }
+</script>

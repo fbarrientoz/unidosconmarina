@@ -22,6 +22,7 @@ namespace UPM.Entities
         public string usuarioUpdate { get; set; }
         public Nullable<System.DateTime> fechaRegistro { get; set; }
         public Nullable<System.DateTime> fechaupdate { get; set; }
+    
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual AspNetUser AspNetUser1 { get; set; }
     }

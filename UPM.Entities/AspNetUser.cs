@@ -22,6 +22,8 @@ namespace UPM.Entities
             this.AspNetRoles = new HashSet<AspNetRole>();
             this.Banners = new HashSet<Banner>();
             this.Banners1 = new HashSet<Banner>();
+            this.Noticias = new HashSet<Noticia>();
+            this.Noticias1 = new HashSet<Noticia>();
         }
     
         public string Id { get; set; }
@@ -47,5 +49,9 @@ namespace UPM.Entities
         public virtual ICollection<Banner> Banners { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Banner> Banners1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Noticia> Noticias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Noticia> Noticias1 { get; set; }
     }
 }

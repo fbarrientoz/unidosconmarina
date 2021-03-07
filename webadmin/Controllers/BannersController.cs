@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,21 +21,6 @@ namespace webadmin.Controllers
         public ActionResult Index()
         {
             return View(db.Banners.ToList());
-        }
-
-        // GET: Banners/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(banner);
         }
 
         // GET: Banners/Create
@@ -82,7 +68,7 @@ namespace webadmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
+            Banner banner = db.Banners.Include(a => a.AspNetUser).FirstOrDefault(x => x.Id == id);
             if (banner == null)
             {
                 return HttpNotFound();
@@ -95,10 +81,18 @@ namespace webadmin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,url_foto,estatus,link,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaupdate")] Banner banner)
+        public ActionResult Edit([Bind(Include = "Id,url_foto,estatus,link,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaupdate")] Banner banner, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+
+                if (file != null)
+                {
+                    string NombreArchivo = System.IO.Path.GetFileName(file.FileName);
+                    string physicalPath = Server.MapPath("~/Content/images/banners/" + NombreArchivo);
+                    file.SaveAs(physicalPath);
+                    banner.url_foto = NombreArchivo;
+                }
                 db.Entry(banner).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,30 +100,34 @@ namespace webadmin.Controllers
             return View(banner);
         }
 
-        // GET: Banners/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public async System.Threading.Tasks.Task<JsonResult> EliminarAsync(Banner data)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(banner);
-        }
+                Banner banner = db.Banners.Find(data.Id);
+                db.Banners.Remove(banner);
+                await db.SaveChangesAsync();
 
-        // POST: Banners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Banner banner = db.Banners.Find(id);
-            db.Banners.Remove(banner);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                return Json(new { accion = true, Msg = "Se ha eliminado correctamente" });
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            catch (Exception e)
+            {
+                return Json(new { accion = false, Msg = e.Message });
+            }
+
         }
 
         protected override void Dispose(bool disposing)

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6e551e38c3e547a390a3ba157e4171cc" Name="Diagram1">
+      <Diagram DiagramId="6e551e38c3e547a390a3ba157e4171cc" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="UnidosconmarinaModel.Banner" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UnidosconmarinaModel.Evento" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UnidosconmarinaModel.HistorialContacto" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
@@ -21,6 +21,8 @@
         <AssociationConnector Association="UnidosconmarinaModel.AspNetUserRoles" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_Banners_AspNetUsers" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_Banners_AspNetUsers1" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_Noticias_AspNetUsers" />
+        <AssociationConnector Association="UnidosconmarinaModel.FK_Noticias_AspNetUsers1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
