@@ -72,6 +72,9 @@
       <DependentUpon>unidosconmarinaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoVotante.cs">
+      <DependentUpon>unidosconmarinaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="unidosconmarinaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

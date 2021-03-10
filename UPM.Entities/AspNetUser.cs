@@ -24,6 +24,7 @@ namespace UPM.Entities
             this.Banners1 = new HashSet<Banner>();
             this.Noticias = new HashSet<Noticia>();
             this.Noticias1 = new HashSet<Noticia>();
+            this.HistorialContactoes = new HashSet<HistorialContacto>();
         }
     
         public string Id { get; set; }
@@ -53,5 +54,7 @@ namespace UPM.Entities
         public virtual ICollection<Noticia> Noticias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Noticia> Noticias1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistorialContacto> HistorialContactoes { get; set; }
     }
 }

@@ -105,8 +105,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="comentario" Type="varchar" MaxLength="250" />
           <Property Name="FkPadron" Type="int" Nullable="false" />
-          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
-          <Property Name="fechaupdate" Type="date" />
+          <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="128" />
+          <Property Name="fechaupdate" Type="datetime" />
         </EntityType>
         <EntityType Name="Noticias">
           <Key>
@@ -129,21 +129,30 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="50" />
-          <Property Name="paterno" Type="varchar" MaxLength="50" />
-          <Property Name="materno" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="telefono" Type="varchar" MaxLength="50" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="paterno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="materno" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="celular" Type="varchar" MaxLength="50" />
           <Property Name="direccion" Type="varchar" MaxLength="150" />
           <Property Name="comentario" Type="varchar" MaxLength="250" />
           <Property Name="rfc" Type="varchar" MaxLength="50" />
           <Property Name="curp" Type="varchar" MaxLength="50" />
           <Property Name="claveElectoral" Type="varchar" MaxLength="50" />
-          <Property Name="votante" Type="bit" />
+          <Property Name="votante" Type="int" Nullable="false" />
           <Property Name="usuarioRegistro" Type="nvarchar" MaxLength="256" />
           <Property Name="usuarioUpdate" Type="nvarchar" MaxLength="256" />
           <Property Name="fechaRegistro" Type="date" />
           <Property Name="fechaUpdate" Type="date" />
+          <Property Name="email" Type="varchar" MaxLength="70" />
+          <Property Name="registroCompleto" Type="bit" />
+        </EntityType>
+        <EntityType Name="TipoVotante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_votante" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_Banners_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
@@ -225,6 +234,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HistorialContacto_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="HistorialContacto" Type="Self.HistorialContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialContacto">
+              <PropertyRef Name="usuarioRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_HistorialContacto_Padron">
           <End Role="Padron" Type="Self.Padron" Multiplicity="1" />
           <End Role="HistorialContacto" Type="Self.HistorialContacto" Multiplicity="*" />
@@ -273,6 +294,7 @@
           <EntitySet Name="HistorialContacto" EntityType="Self.HistorialContacto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Padron" EntityType="Self.Padron" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoVotante" EntityType="Self.TipoVotante" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Banners_AspNetUsers" Association="Self.FK_Banners_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Banners" EntitySet="Banners" />
@@ -296,6 +318,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialContacto_AspNetUsers" Association="Self.FK_HistorialContacto_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="HistorialContacto" EntitySet="HistorialContacto" />
           </AssociationSet>
           <AssociationSet Name="FK_HistorialContacto_Padron" Association="Self.FK_HistorialContacto_Padron">
             <End Role="Padron" EntitySet="Padron" />
@@ -355,9 +381,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="FkPadron" Type="Int32" Nullable="false" />
-          <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="fechaupdate" Type="DateTime" Precision="0" />
+          <Property Name="usuarioRegistro" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="fechaupdate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Padron" Relationship="Self.FK_HistorialContacto_Padron" FromRole="HistorialContacto" ToRole="Padron" />
+          <NavigationProperty Name="AspNetUser" Relationship="UnidosconmarinaModel.FK_HistorialContacto_AspNetUsers" FromRole="HistorialContacto" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="Noticia">
           <Key>
@@ -382,22 +409,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="celular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="comentario" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="rfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="curp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="claveElectoral" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="votante" Type="Boolean" />
+          <Property Name="votante" Type="Int32" Nullable="false" />
           <Property Name="usuarioRegistro" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="usuarioUpdate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="fechaRegistro" Type="DateTime" Precision="0" />
           <Property Name="fechaUpdate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="HistorialContactoes" Relationship="Self.FK_HistorialContacto_Padron" FromRole="Padron" ToRole="HistorialContacto" />
+          <Property Name="email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TipoVotante" Relationship="UnidosconmarinaModel.FK_Padron_TipoVotante" FromRole="Padron" ToRole="TipoVotante" />
+          <Property Name="registroCompleto" Type="Boolean" />
         </EntityType>
         <Association Name="FK_HistorialContacto_Padron">
           <End Role="Padron" Type="Self.Padron" Multiplicity="1" />
@@ -453,6 +483,15 @@
           <AssociationSet Name="FK_Noticias_AspNetUsers1" Association="UnidosconmarinaModel.FK_Noticias_AspNetUsers1">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Noticia" EntitySet="Noticias" />
+          </AssociationSet>
+          <EntitySet Name="TipoVotantes" EntityType="UnidosconmarinaModel.TipoVotante" />
+          <AssociationSet Name="FK_Padron_TipoVotante" Association="UnidosconmarinaModel.FK_Padron_TipoVotante">
+            <End Role="TipoVotante" EntitySet="TipoVotantes" />
+            <End Role="Padron" EntitySet="Padrons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistorialContacto_AspNetUsers" Association="UnidosconmarinaModel.FK_HistorialContacto_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="HistorialContacto" EntitySet="HistorialContactoes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -517,6 +556,7 @@
           <NavigationProperty Name="Banners1" Relationship="UnidosconmarinaModel.FK_Banners_AspNetUsers1" FromRole="AspNetUser" ToRole="Banner" />
           <NavigationProperty Name="Noticias" Relationship="UnidosconmarinaModel.FK_Noticias_AspNetUsers" FromRole="AspNetUser" ToRole="Noticia" />
           <NavigationProperty Name="Noticias1" Relationship="UnidosconmarinaModel.FK_Noticias_AspNetUsers1" FromRole="AspNetUser" ToRole="Noticia" />
+          <NavigationProperty Name="HistorialContactoes" Relationship="UnidosconmarinaModel.FK_HistorialContacto_AspNetUsers" FromRole="AspNetUser" ToRole="HistorialContacto" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -598,6 +638,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TipoVotante">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_votante" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Padrons" Relationship="UnidosconmarinaModel.FK_Padron_TipoVotante" FromRole="TipoVotante" ToRole="Padron" />
+        </EntityType>
+        <Association Name="FK_Padron_TipoVotante">
+          <End Type="UnidosconmarinaModel.TipoVotante" Role="TipoVotante" Multiplicity="1" />
+          <End Type="UnidosconmarinaModel.Padron" Role="Padron" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVotante">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Padron">
+              <PropertyRef Name="votante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistorialContacto_AspNetUsers">
+          <End Type="UnidosconmarinaModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="UnidosconmarinaModel.HistorialContacto" Role="HistorialContacto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HistorialContacto">
+              <PropertyRef Name="usuarioRegistro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -669,6 +741,8 @@
           <EntitySetMapping Name="Padrons">
             <EntityTypeMapping TypeName="UnidosconmarinaModel.Padron">
               <MappingFragment StoreEntitySet="Padron">
+                <ScalarProperty Name="registroCompleto" ColumnName="registroCompleto" />
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="paterno" ColumnName="paterno" />
@@ -751,6 +825,14 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="TipoVotantes">
+            <EntityTypeMapping TypeName="UnidosconmarinaModel.TipoVotante">
+              <MappingFragment StoreEntitySet="TipoVotante">
+                <ScalarProperty Name="tipo_votante" ColumnName="tipo_votante" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
