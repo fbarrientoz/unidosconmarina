@@ -1,0 +1,512 @@
+﻿@using Microsoft.AspNet.Identity;
+@model  webadmin.Models.PadronHistorial
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+    var UserId = User.Identity.GetUserId();
+    var userName = User.Identity.GetUserName();
+}
+
+
+@{
+    List<SelectListItem> tipoVotante = new List<SelectListItem>();
+
+    tipoVotante.Add(new SelectListItem() { Text = "SI", Value = "1" });
+    tipoVotante.Add(new SelectListItem() { Text = "NO", Value = "2" });
+    tipoVotante.Add(new SelectListItem() { Text = "INDECISO", Value = "3" });
+
+}
+
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            CATALAGOS
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="@Url.Action("Index", "Padrons")" class="kt-subheader__breadcrumbs-link">
+                Padron
+            </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="@Url.Action("edit", "Padrons", new { id = Model.padron.Id })" class="kt-subheader__breadcrumbs-link">
+                Editar persona
+            </a>
+
+        </div>
+    </div>
+
+</div>
+<!-- end:: Subheader -->
+@using (Ajax.BeginForm("Edit", "Padrons", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "successAction"
+
+},
+                            new { @id = "modalForm", enctype = "multipart/form-data" }
+                            ))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div class="kt-portlet kt-portlet--mobile">
+
+            <div class="kt-portlet__body">
+
+                <div class="form-horizontal">
+                    <h4>Editar Persona</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <br />
+                    <div class="row" style="display:none">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="">
+                                    @Html.EditorFor(model => model.padron.Id, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.Id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.nombre, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.nombre, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Nombre
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.paterno, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.paterno, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Apellido Paterno
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.materno, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.materno, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Apellido Materno
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.telefono, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.telefono, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Numero Telefónico
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.celular, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.celular, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Numero Celular
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.direccion, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.direccion, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Dirección
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.email, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Correo Electrónico
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.rfc, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.rfc, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    RFC
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.curp, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.curp, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    CURP
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.padron.claveElectoral, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.padron.claveElectoral, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Clave Electoral
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    @Html.DropDownListFor(model => model.padron.votante, tipoVotante, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.padron.votante, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Es votante?
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div>
+                                    @Html.TextAreaFor(model => model.padron.comentario, new { @class = "form-control required", @cols = 400, @rows = 7 })
+                                    @Html.ValidationMessageFor(model => model.padron.comentario, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Pregunta y/o comentario de ciudadano
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion accordion-solid accordion-toggle-plus" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <div class="card-title collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="flaticon2-list-2"></i> Historial de Contacto
+                                </div>
+                            </div>
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align:right">
+                                            <a href="javascript:;" onclick="openNewEmpresa(@Model.padron.Id)" aria-hidden="true" class="btn btn-brand btn-elevate btn-icon-sm">
+                                                <span class="fa fa-lg"></span> Agregar nuevo seguimiento
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="table-responsive">
+                                            <!--begin: Datatable -->
+                                            <table class="dataTable table table-striped- table-bordered table-hover table-checkable no-wrap display" data-order="[[2, &quot;asc&quot;]]">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+
+                                                        <th data-orderable="false" data-searchable="false" data-visible="false">ID</th>
+
+                                                        <th class="all">Usuario</th>
+                                                        <th>Fecha de Contacto</th>
+                                                        <th>Comentarios</th>
+                                                        <th class="all"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item2 in Model.historial)
+                                                    {
+                                                        <tr>
+                                                            <td></td>
+                                                            <td data-info="Id">
+                                                                @item2.Id
+                                                            </td>
+                                                            <td data-info="Usuario">
+                                                                @item2.AspNetUser.UserName
+                                                            </td>
+                                                            <td data-info="Fecha contacto">
+                                                                @item2.fechaupdate
+                                                            </td>
+                                                            <td data-info="Comentarios">
+                                                                @item2.comentario
+                                                            </td>
+                                                            <td>
+                                                                <span class="fa fa-trash fa-lg" aria-hidden="true" onclick="openModalEliminar(@item2.Id)"></span>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <!--end: Datatable -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar cambios" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="modalAddEliminar" tabindex="-1" role="dialog" aria-labelledby="modalAddEliminar" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Elemento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmFEliminar" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <input type="hidden" name="Id" id="Id" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <h5>¿Estas seguro que deseas eliminar el seguimiento?</h5>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnFinalizarEvaluacion" type="button" class="btn btn-primary" onclick="eliminar('@Url.Action("EliminarHistorialAsync", "Padrons")');">Finalizar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalAddEmpresa" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Seguimiento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmEmpresa" enctype="multipart/form-data">
+                    <input type="hidden" name="FkPadron" id="FkPadron" class="form-control" />
+
+                    <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>Usuario</label>
+                                <input type="text" name="Usuario" value="@userName" class="form-control" />
+                                <input type="hidden" name="usuarioRegistro" id="usuarioRegistro" value="@UserId" class="form-control" />
+                            </div>
+                        </div>
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            <label>Comentario</label>
+                            <textarea type="text" name="comentario" id="comentario" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnGuardarProgramacion" type="button" class="btn btn-primary" onclick="save('@Url.Action("CreateAsync", "Padrons")');">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Regresar a Listado", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function eliminar(url) {
+            Swal.fire({
+                title: 'Procesando!',
+                html: '',
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    return new Promise((resolve) => {
+                        var formData = new FormData($('form#frmFEliminar')[0]);
+
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,// "multipart/form-data",
+                            processData: false,
+                            success: function (result) {
+                                if (result.accion) {
+                                    Swal.fire({
+                                        title: 'Realizado!',
+                                        text: 'Se ha eliminado correctamente',
+                                        type: 'success',
+                                        onClose: () => {
+                                            window.location.reload();
+                                        }
+                                    });
+                                }
+                                else
+                                    Swal.fire('Ops!', 'No se puede eliminar el seguimiento.', 'error');
+                            },
+                            error: function (error) {
+                                Swal.fire('Ops!', 'No se puede eliminar el seguimiento.', 'error');
+                            }
+                        });
+
+                    })
+                },
+            }).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Realizado!',
+                        text: 'Se ha eliminado correctamente',
+                        type: 'success',
+                        onClose: () => {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function openModalEliminar(id) {
+            var modal = $('#modalAddEliminar');
+            modal.find('form')[0].reset();
+            modal.find('input#Id').val(id);
+            modal.modal('show');
+        }
+    </script>
+
+    <script>
+        function save(url) {
+            Swal.fire({
+                title: 'Procesando!',
+                html: '',
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    return new Promise((resolve) => {
+                        var formData = new FormData($('form#frmEmpresa')[0]);
+
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,// "multipart/form-data",
+                            processData: false,
+                            success: function (result) {
+                                if (result.accion) {
+                                    Swal.fire({
+                                        title: 'Realizado!',
+                                        text: 'Se ha guardado el seguimiento correctamente',
+                                        type: 'success',
+                                        onClose: () => {
+                                            window.location.reload();
+                                        }
+                                    });
+                                }
+                                else
+                                    Swal.fire('Ops!', result.Msg, 'error');
+                            },
+                            error: function (error) {
+                                Swal.fire('Ops!', 'No se pudo completar la operación.', 'error');
+                            }
+                        });
+
+                    })
+                },
+            }).then((result) => {
+
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Realizado!',
+                        text: 'Se ha guardado el seguimiento correctamente',
+                        type: 'success',
+                        onClose: () => {
+                            window.location.reload();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+    <script>
+        function openNewEmpresa(id, url) {
+            var modal = $('#modalAddEmpresa');
+            modal.find('form')[0].reset();
+            modal.find('input#FkPadron').val(id);
+
+            modal.modal('show');
+        }
+    </script>
+}

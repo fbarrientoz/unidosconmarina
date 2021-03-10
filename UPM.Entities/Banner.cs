@@ -16,11 +16,14 @@ namespace UPM.Entities
     {
         public int Id { get; set; }
         public string url_foto { get; set; }
-        public Nullable<bool> estatus { get; set; }
+        public bool estatus { get; set; }
         public byte[] link { get; set; }
         public string usuarioRegistro { get; set; }
         public string usuarioUpdate { get; set; }
         public Nullable<System.DateTime> fechaRegistro { get; set; }
         public Nullable<System.DateTime> fechaupdate { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
     }
 }

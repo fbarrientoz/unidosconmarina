@@ -21,5 +21,6 @@ namespace UPM.Entities
         public Nullable<System.DateTime> fechaupdate { get; set; }
     
         public virtual Padron Padron { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

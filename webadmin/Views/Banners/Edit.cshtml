@@ -1,0 +1,178 @@
+﻿@using Microsoft.AspNet.Identity;
+@model UPM.Entities.Banner
+
+
+@{
+    ViewBag.Title = "Edit";
+    var UserId = User.Identity.GetUserId();
+    var userName = User.Identity.GetUserName();
+}
+
+@{
+    Html.EnableClientValidation(true);
+    Html.EnableUnobtrusiveJavaScript(true);
+}
+<!-- begin:: Subheader -->
+<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+    <div class="kt-subheader__main">
+        <h3 class="kt-subheader__title">
+            CATALOGOS
+        </h3>
+        <span class="kt-subheader__separator kt-hidden"></span>
+        <div class="kt-subheader__breadcrumbs">
+            <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="@Url.Action("Index", "Empresa")" class="kt-subheader__breadcrumbs-link">
+                Banners
+            </a>
+            <span class="kt-subheader__breadcrumbs-separator"></span>
+            <a href="#" class="kt-subheader__breadcrumbs-link">
+                Editar Banner
+            </a>
+
+        </div>
+    </div>
+
+</div>
+<!-- end:: Subheader -->
+@using (Ajax.BeginForm("Edit", "Empresa", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "successAction"
+
+},
+                            new { @id = "modalForm", enctype = "multipart/form-data" }
+                            ))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+        <div class="kt-portlet kt-portlet--mobile">
+
+            <div class="kt-portlet__body">
+
+                <div class="form-horizontal">
+                    <h4>Editar Banner</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <div class="fileinput-new img-thumbnail" style="width: 580px; height: 266px;">
+                                    @if (!string.IsNullOrEmpty(Model.url_foto))
+                                    {
+                                        <img src="~/Content/images/banners/@Model.url_foto " alt="..." style="max-width: 580px; max-height: 266px;">
+                                        @Html.HiddenFor(model => model.url_foto, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    }
+                                    else
+                                    {
+                                        <img src="~/assets/media/icons/camera2.png" alt="...">
+                                    }
+                                </div>
+                                <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 580px; max-height: 266px;"></div>
+                                <div>
+                                    <span class="btn btn-default btn-file">
+                                        <span class="fileinput-new">Elegir Foto</span>
+                                        <span class="fileinput-exists">Cambiar</span>
+                                        <input type="file" name="file" id="file">
+                                    </span>
+                                    <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            @if (ViewBag.imageBytes != null)
+                            {
+
+                                <img width="150" height="150" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(ViewBag.imageBytes))" />
+                            }
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <br />
+                                <div class="">
+                                    <div class="checkbox">
+                                        @Html.LabelFor(model => model.estatus, "Se publica?", htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.estatus)
+                                        @Html.ValidationMessageFor(model => model.estatus, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+
+                                    <span class="kt-header__topbar-username kt-hidden-mobile form-control" style="background-color:#f5f5f5"> @Model.AspNetUser.Email</span>
+                                    @Html.HiddenFor(model => model.usuarioRegistro, new {  htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.usuarioRegistro, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Usuario de Registro
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <div>
+                                    @Html.TextBoxFor(model => model.fechaRegistro, "{0:yyyy-MM-dd}", htmlAttributes: new {  @class = "form-control", @readonly = "readonly", @style = "background-color:#f5f5f5"  })
+                                    @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Fecha Registro
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div>
+
+                                    <span class="kt-header__topbar-username kt-hidden-mobile form-control" style="background-color:#f5f5f5"> @userName</span>
+                                    @Html.HiddenFor(model => model.usuarioUpdate, new { Value = UserId, htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.usuarioUpdate, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Usuario de Actualización
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <div>
+                                    @Html.EditorFor(model => model.fechaupdate, new { htmlAttributes = new { Value = System.DateTime.Now.ToString("MM/dd/yyyy"), @class = "form-control", @readonly = "readonly", @style = "background-color:#f5f5f5" } })
+                                    @Html.ValidationMessageFor(model => model.fechaupdate, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    Fecha Actualización
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Editar" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
