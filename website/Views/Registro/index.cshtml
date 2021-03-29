@@ -8,7 +8,7 @@
 
         <div class="row">
 
-            <form class="shop-register" role="form">
+            <form class="shop-register" id="frmRegistro" enctype="multipart/form-data">
 
                 <div class="col-sm-4">
                     <div class="form-group validate-required" id="billing_first_name_field">
@@ -17,7 +17,7 @@
                             <span class="required">*</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_first_name" id="billing_first_name" placeholder="" value="">
+                        <input type="text" class="form-control " name="nombre" id="nombre" placeholder="" value="">
                     </div>
 
                     <div class="form-group validate-required validate-phone" id="billing_phone_field">
@@ -26,7 +26,7 @@
                             <span class="required">*</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_phone" id="billing_phone" placeholder="numero casa" value="">
+                        <input type="number" class="form-control " name="telefono" id="telefono" placeholder="numero casa" value="">
 
                     </div>
 
@@ -40,7 +40,7 @@
                             <span class="required">*</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_last_name" id="billing_last_name" placeholder="" value="">
+                        <input type="text" class="form-control " name="paterno" id="paterno" placeholder="" value="">
 
                     </div>
 
@@ -49,7 +49,7 @@
                             <span class="grey">Teléfono Celular</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_phone" id="billing_phone" placeholder="numero celular" value="">
+                        <input type="number" class="form-control " name="celular" id="celular" placeholder="numero celular" value="">
 
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                             <span class="grey">Apellido materno </span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_last_name" id="billing_last_name" placeholder="" value="">
+                        <input type="text" class="form-control " name="materno" id="materno" placeholder="" value="">
 
                     </div>
 
@@ -70,7 +70,7 @@
                             <span class="required">*</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_email" id="billing_email" placeholder="" value="">
+                        <input type="email" class="form-control " name="email" id="email" placeholder="" value="">
 
                     </div>
 
@@ -85,7 +85,7 @@
                             <span class="required">*</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_address_1" id="billing_address_1" placeholder="Número / Calle / Colonia / Codigo Postal" value="">
+                        <input type="text" class="form-control " name="direccion" id="direccion" placeholder="Número / Calle / Colonia / Codigo Postal" value="">
 
                     </div>
 
@@ -98,7 +98,7 @@
                             <span class="grey">RFC </span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_postcode" id="billing_postcode" placeholder="clave RFC" value="">
+                        <input type="text" class="form-control " name="rfc" id="rfc" placeholder="clave RFC" value="">
 
                     </div>
 
@@ -107,7 +107,7 @@
                             <span class="grey">Clave Electoral</span>
                         </label>
 
-                        <input type="text" class="form-control " name="billing_phone" id="billing_phone" placeholder="" value="">
+                        <input type="text" class="form-control " name="claveElectoral" id="claveElectoral" placeholder="" value="">
 
                     </div>
 
@@ -115,14 +115,33 @@
                         <label for="billing_address_1" class="control-label">
                             <span class="grey">Comentario</span>
                         </label>
-                        <textarea rows="10" type="text" class="form-control " name="billing_address_1" id="billing_address_1" placeholder="Deja tu comentario y/o pregunta" value=""></textarea>
+                        <textarea rows="10" type="text" class="form-control " name="comentario" id="comentario" placeholder="Deja tu comentario y/o pregunta" value=""></textarea>
                     </div>
 
                     <div class="form-group">
-
+                        <label for="billing_phone" class="control-label">
+                            <span class="grey">Votaras por Marina?</span>
+                        </label>
                         <div class="radio">
                             <label>
-                                <input type="radio"> Votaras por Marina?
+                                <input type="radio" class="form-control " name="votante" id="votante" value="1"> Si
+                            </label>
+                            <label>
+                                <input type="radio" class="form-control " name="votante" id="votante" value="0"> No
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="billing_phone" class="control-label">
+                            <span class="grey">Eres de Imss?</span>
+                        </label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" class="form-control " name="esImss" id="esImss" value="true"> Si
+                            </label>
+                            <label>
+                                <input type="radio" class="form-control " name="esImss" id="esImss" value="false"> No
                             </label>
                         </div>
 
@@ -139,16 +158,13 @@
                         <label for="billing_fax" class="control-label">
                             <span class="grey">CURP </span>
                         </label>
-
-                        <input type="text" class="form-control " name="billing_fax" id="billing_fax" placeholder="clave curp" value="">
-
+                        <input type="text" class="form-control " name="curp" id="curp" placeholder="clave curp" value="">
                     </div>
                 </div>
 
-
                 <div class="col-sm-12">
 
-                    <button type="submit" class="theme_button wide_button color1">Registrase Ahora</button>
+                    <button type="button" class="theme_button wide_button color1" onclick="save('@Url.Action("RegistroJson", "Registro")');">Registrase Ahora</button>
                     <button type="reset" class="theme_button wide_button">Limpiar Formulario</button>
 
                 </div>
@@ -159,3 +175,57 @@
         </div>
     </div>
 </section>
+
+<script>
+    function save(url) {
+    Swal.fire({
+        title: 'Procesando!',
+        html: '',
+        onBeforeOpen: () => {
+            Swal.showLoading()
+            return new Promise((resolve) => {
+                var formData = new FormData($('form#frmRegistro')[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,// "multipart/form-data",
+                    processData: false,
+                    success: function (result) {
+                        if (result.accion) {
+                            Swal.fire({
+                                title: 'Realizado!',
+                                text: 'Se ha agregado correctamente',
+                                type: 'success',
+                                onClose: () => {
+                                    window.location.reload();
+                                }
+                            });
+                        } 
+                        else
+                            Swal.fire('Ops!', result.Msg, 'error');
+                    },
+                    error: function (error) {
+                        Swal.fire('Ops!', 'No se pudo completar la operación.', 'error');
+                    }
+                });
+
+            })
+        },
+    }).then((result) => {
+      
+        if (result.value) {
+            Swal.fire({
+                title: 'Realizado!',
+                text: 'Se ha agregado correctamente',
+                type: 'success',
+                onClose: () => {
+                    window.location.reload();
+                }
+            });
+        }
+    });
+}
+</script>

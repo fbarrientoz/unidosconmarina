@@ -58,6 +58,7 @@ namespace website.Controllers
                 {
                     padron.registroCompleto = false;
                 }
+                padron.fechaRegistro = DateTime.Now.Date;
                 db.Padrons.Add(padron);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -184,6 +185,46 @@ namespace website.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        public async System.Threading.Tasks.Task<JsonResult> RegistroJson(Padron data, HttpPostedFileBase file)
+        {
+            try
+            {
+                if (data.nombre != null && data.paterno != null && data.telefono != null && data.celular != null && data.direccion != null && data.rfc != null && data.curp != null && data.claveElectoral != null && data.email != null)
+                {
+                    data.registroCompleto = true;
+                }
+                else
+                {
+                    data.registroCompleto = false;
+                }
+
+                data.fechaRegistro = DateTime.Now.Date;
+
+                db.Padrons.Add(data);
+                await db.SaveChangesAsync();
+
+                return Json(new { accion = true, Msg = "Se ha registrado correctamente" });
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            catch (Exception e)
+            {
+                return Json(new { accion = false, Msg = e.Message });
+            }
+
         }
     }
 }

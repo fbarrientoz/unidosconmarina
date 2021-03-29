@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -186,6 +188,93 @@
     <Content Include="Content\css\fonts.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\main2.css" />
+    <Content Include="Content\custom\datatables\datatables.bundle.css" />
+    <Content Include="Content\custom\datatables\datatables.bundle.js" />
+    <Content Include="Content\custom\datatables\datatables.bundle.min.css" />
+    <Content Include="Content\custom\datatables\datatables.bundle.min.js" />
+    <Content Include="Content\custom\datatables\datatables.bundle.rtl.css" />
+    <Content Include="Content\custom\datatables\datatables.bundle.rtl.min.css" />
+    <Content Include="Content\custom\dropzone\basic.css" />
+    <Content Include="Content\custom\dropzone\basic.min.css" />
+    <Content Include="Content\custom\dropzone\dropzone-amd-module.js" />
+    <Content Include="Content\custom\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="Content\custom\dropzone\dropzone.css" />
+    <Content Include="Content\custom\dropzone\dropzone.js" />
+    <Content Include="Content\custom\dropzone\dropzone.min.css" />
+    <Content Include="Content\custom\dropzone\dropzone.min.js" />
+    <Content Include="Content\custom\flot\flot.bundle.js" />
+    <Content Include="Content\custom\flot\flot.bundle.min.js" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.css" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.js" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.min.css" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.min.js" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.rtl.css" />
+    <Content Include="Content\custom\fullcalendar\fullcalendar.bundle.rtl.min.css" />
+    <Content Include="Content\custom\fullcalendar\locales-all.js" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-brands-400.svg" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-regular-400.svg" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-solid-900.svg" />
+    <Content Include="Content\custom\global\fonts\flaticon2\Flaticon2.svg" />
+    <Content Include="Content\custom\global\fonts\flaticon\Flaticon.svg" />
+    <Content Include="Content\custom\global\fonts\line-awesome\line-awesome.svg" />
+    <Content Include="Content\custom\global\fonts\socicon\socicon.svg" />
+    <Content Include="Content\custom\global\images\owl.carousel\ajax-loader.gif" />
+    <Content Include="Content\custom\global\images\owl.carousel\owl.video.play.png" />
+    <Content Include="Content\custom\global\plugins.bundle.css" />
+    <Content Include="Content\custom\global\plugins.bundle.js" />
+    <Content Include="Content\custom\global\plugins.bundle.rtl.css" />
+    <Content Include="Content\custom\global\scripts.bundle.js" />
+    <Content Include="Content\custom\gmaps\gmaps.js" />
+    <Content Include="Content\custom\gmaps\gmaps.min.js" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.css" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.js" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.min.css" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.min.js" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.rtl.css" />
+    <Content Include="Content\custom\jquery-ui\jquery-ui.bundle.rtl.min.css" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.css" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.js" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.min.css" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.min.js" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.rtl.css" />
+    <Content Include="Content\custom\jqvmap\jqvmap.bundle.rtl.min.css" />
+    <Content Include="Content\custom\jstree\images\32px.png" />
+    <Content Include="Content\custom\jstree\images\40px.png" />
+    <Content Include="Content\custom\jstree\images\throbber.gif" />
+    <Content Include="Content\custom\jstree\jstree.bundle.css" />
+    <Content Include="Content\custom\jstree\jstree.bundle.js" />
+    <Content Include="Content\custom\jstree\jstree.bundle.min.css" />
+    <Content Include="Content\custom\jstree\jstree.bundle.min.js" />
+    <Content Include="Content\custom\jstree\jstree.bundle.rtl.css" />
+    <Content Include="Content\custom\jstree\jstree.bundle.rtl.min.css" />
+    <Content Include="Content\custom\js\vendors\bootstrap-datepicker.init.js" />
+    <Content Include="Content\custom\js\vendors\bootstrap-markdown.init.js" />
+    <Content Include="Content\custom\js\vendors\bootstrap-notify.init.js" />
+    <Content Include="Content\custom\js\vendors\bootstrap-switch.init.js" />
+    <Content Include="Content\custom\js\vendors\bootstrap-timepicker.init.js" />
+    <Content Include="Content\custom\js\vendors\datatables.init.js" />
+    <Content Include="Content\custom\js\vendors\jquery-validation.init.js" />
+    <Content Include="Content\custom\js\vendors\sweetalert2.init.js" />
+    <Content Include="Content\custom\vendors\bootstrap-multiselectsplitter\bootstrap-multiselectsplitter.js" />
+    <Content Include="Content\custom\vendors\bootstrap-multiselectsplitter\bootstrap-multiselectsplitter.min.js" />
+    <Content Include="Content\custom\vendors\bootstrap-session-timeout\dist\bootstrap-session-timeout.js" />
+    <Content Include="Content\custom\vendors\bootstrap-session-timeout\dist\bootstrap-session-timeout.min.js" />
+    <Content Include="Content\custom\vendors\flaticon2\flaticon.css" />
+    <Content Include="Content\custom\vendors\flaticon2\font\Flaticon2.svg" />
+    <Content Include="Content\custom\vendors\flaticon2\license.html" />
+    <Content Include="Content\custom\vendors\flaticon\flaticon.css" />
+    <Content Include="Content\custom\vendors\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\custom\vendors\flaticon\license.html" />
+    <Content Include="Content\custom\vendors\jquery-idletimer\idle-timer.js" />
+    <Content Include="Content\custom\vendors\jquery-idletimer\idle-timer.min.js" />
+    <Content Include="Content\custom\vendors\line-awesome\css\line-awesome.css" />
+    <Content Include="Content\custom\vendors\line-awesome\fonts\line-awesome.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\fontello.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -346,6 +435,72 @@
     <Content Include="Content\mailchimp\index.php" />
     <Content Include="Content\mailchimp\MCAPI.class.php" />
     <Content Include="Content\mailchimp\store-address.php" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.all.js" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.all.min.js" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.css" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.js" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.min.css" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.min.js" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.min.rtl.css" />
+    <Content Include="Content\sweetalert2\dist\sweetalert2.rtl.css" />
+    <Content Include="Content\sweetalert2\src\constants.js" />
+    <Content Include="Content\sweetalert2\src\enhancers\withNoNewKeyword.js" />
+    <Content Include="Content\sweetalert2\src\globalState.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\close.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\enable-disable-elements.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\getInput.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\hideLoading.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\progress-steps.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\show-reset-validation-error.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\update.js" />
+    <Content Include="Content\sweetalert2\src\instanceMethods\_main.js" />
+    <Content Include="Content\sweetalert2\src\privateMethods.js" />
+    <Content Include="Content\sweetalert2\src\privateProps.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\argsToParams.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\dom.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\fire.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\mixin.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\queue.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\showLoading.js" />
+    <Content Include="Content\sweetalert2\src\staticMethods\timer.js" />
+    <Content Include="Content\sweetalert2\src\SweetAlert.js" />
+    <Content Include="Content\sweetalert2\src\sweetalert2.js" />
+    <Content Include="Content\sweetalert2\src\utils\aria.js" />
+    <Content Include="Content\sweetalert2\src\utils\classes.js" />
+    <Content Include="Content\sweetalert2\src\utils\defaultInputValidators.js" />
+    <Content Include="Content\sweetalert2\src\utils\DismissReason.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\animationEndEvent.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\domUtils.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\getters.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\index.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\init.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\inputUtils.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\measureScrollbar.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\parseHtmlToContainer.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\render.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderActions.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderCloseButton.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderContainer.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderContent.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderFooter.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderHeader.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderIcon.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderImage.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderInput.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderPopup.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderProgressSteps.js" />
+    <Content Include="Content\sweetalert2\src\utils\dom\renderers\renderTitle.js" />
+    <Content Include="Content\sweetalert2\src\utils\ieFix.js" />
+    <Content Include="Content\sweetalert2\src\utils\iosFix.js" />
+    <Content Include="Content\sweetalert2\src\utils\isNodeEnv.js" />
+    <Content Include="Content\sweetalert2\src\utils\openPopup.js" />
+    <Content Include="Content\sweetalert2\src\utils\params.js" />
+    <Content Include="Content\sweetalert2\src\utils\scrollbarFix.js" />
+    <Content Include="Content\sweetalert2\src\utils\setParameters.js" />
+    <Content Include="Content\sweetalert2\src\utils\Timer.js" />
+    <Content Include="Content\sweetalert2\src\utils\utils.js" />
     <Content Include="Content\twitter\index.php" />
     <Content Include="Content\twitter\jquery.tweet.js" />
     <Content Include="Content\twitter\jquery.tweet.min.js" />
@@ -376,6 +531,57 @@
     <Content Include="Content\fonts\socicon.woff" />
     <Content Include="Content\fonts\socicon.woff2" />
     <Content Include="Content\mailchimp\README" />
+    <Content Include="Content\sweetalert2\CHANGELOG.md" />
+    <Content Include="Content\sweetalert2\LICENSE" />
+    <Content Include="Content\sweetalert2\package.json" />
+    <Content Include="Content\sweetalert2\README.md" />
+    <Content Include="Content\sweetalert2\src\animations.scss" />
+    <Content Include="Content\sweetalert2\src\mixins.scss" />
+    <Content Include="Content\sweetalert2\src\sweetalert2.scss" />
+    <Content Include="Content\sweetalert2\src\toasts.scss" />
+    <Content Include="Content\sweetalert2\src\variables.scss" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-brands-400.eot" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-brands-400.ttf" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-brands-400.woff" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-brands-400.woff2" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-regular-400.eot" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-regular-400.ttf" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-regular-400.woff" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-regular-400.woff2" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-solid-900.eot" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-solid-900.ttf" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-solid-900.woff" />
+    <Content Include="Content\custom\global\fonts\%40fortawesome\fa-solid-900.woff2" />
+    <Content Include="Content\custom\global\fonts\flaticon2\Flaticon2.eot" />
+    <Content Include="Content\custom\global\fonts\flaticon2\Flaticon2.ttf" />
+    <Content Include="Content\custom\global\fonts\flaticon2\Flaticon2.woff" />
+    <Content Include="Content\custom\global\fonts\flaticon2\Flaticon2.woff2" />
+    <Content Include="Content\custom\global\fonts\flaticon\Flaticon.eot" />
+    <Content Include="Content\custom\global\fonts\flaticon\Flaticon.ttf" />
+    <Content Include="Content\custom\global\fonts\flaticon\Flaticon.woff" />
+    <Content Include="Content\custom\global\fonts\line-awesome\line-awesome.eot" />
+    <Content Include="Content\custom\global\fonts\line-awesome\line-awesome.ttf" />
+    <Content Include="Content\custom\global\fonts\line-awesome\line-awesome.woff" />
+    <Content Include="Content\custom\global\fonts\line-awesome\line-awesome.woff2" />
+    <Content Include="Content\custom\global\fonts\socicon\socicon.eot" />
+    <Content Include="Content\custom\global\fonts\socicon\socicon.ttf" />
+    <Content Include="Content\custom\global\fonts\socicon\socicon.woff" />
+    <Content Include="Content\custom\global\fonts\summernote\summernote.eot" />
+    <Content Include="Content\custom\global\fonts\summernote\summernote.ttf" />
+    <Content Include="Content\custom\global\fonts\summernote\summernote.woff" />
+    <Content Include="Content\custom\vendors\bootstrap-multiselectsplitter\LICENCE" />
+    <Content Include="Content\custom\vendors\flaticon2\font\Flaticon2.eot" />
+    <Content Include="Content\custom\vendors\flaticon2\font\Flaticon2.ttf" />
+    <Content Include="Content\custom\vendors\flaticon2\font\Flaticon2.woff" />
+    <Content Include="Content\custom\vendors\flaticon2\font\Flaticon2.woff2" />
+    <Content Include="Content\custom\vendors\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\custom\vendors\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\custom\vendors\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\custom\vendors\jquery-idletimer\LICENSE-MIT" />
+    <Content Include="Content\custom\vendors\line-awesome\fonts\line-awesome.eot" />
+    <Content Include="Content\custom\vendors\line-awesome\fonts\line-awesome.ttf" />
+    <Content Include="Content\custom\vendors\line-awesome\fonts\line-awesome.woff" />
+    <Content Include="Content\custom\vendors\line-awesome\fonts\line-awesome.woff2" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -448,11 +654,18 @@
       <Name>UPM.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\sweetalert2\sweetalert2.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
