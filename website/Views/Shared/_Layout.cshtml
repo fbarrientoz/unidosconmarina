@@ -55,14 +55,14 @@
                         <div class="col-sm-3 col-xs-12 text-center text-sm-left">
                             <div class="page_social_icons">
                                 <a class="social-icon color-icon soc-facebook" href="#" title="Facebook"></a>
-                                <a class="social-icon color-icon soc-twitter" href="#" title="Twitter"></a>                              
-                                <a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>
+                                @*<a class="social-icon color-icon soc-twitter" href="#" title="Twitter"></a>                              
+                                <a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>*@
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-xs-12 text-center">
-                            <h4>
-                                #unidoscon<span style="color:#d8203b">Marina</span>
+                            <h4>Red Juventud Sindical
+                                #unidoscon<span style="font-weight:900">MARINA</span>
                                 @*<a href="./" class="logo logo_image">
                                     <img src="~/Content/images/logo.png" alt="">
                                 </a>*@
@@ -72,8 +72,8 @@
 
                         <div class="col-sm-3 col-xs-12 text-center text-sm-right">
                             <div class="top_meta">
-                                <i class="fa fa-phone highlight"></i>
-                                <span class="vidaloka grey">1 (800) 253 76 84</span>
+                                @*<i class="fa fa-phone highlight"></i>
+                                <span class="vidaloka grey">1 (800) 253 76 84</span>*@
                                
                             </div>
                         </div>
@@ -88,50 +88,48 @@
                         <div class="col-lg-2 col-md-3 col-xs-6 nowrap hidden-md display_table_cell_md hidden-xs">
                             <div class="page_social_icons">
                                 <a class="social-icon color-icon soc-facebook" href="#" title="Facebook"></a>
-                                <a class="social-icon color-icon soc-twitter" href="#" title="Twitter"></a>
-                                <a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>
+                                @*<a class="social-icon color-icon soc-twitter" href="#" title="Twitter"></a>
+                                <a class="social-icon color-icon soc-youtube" href="#" title="Youtube"></a>*@
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-12 text-right text-md-center display_table_cell_md">
                             <!-- main nav start -->
                             <nav class="mainmenu_wrapper inline-block">
                                 <ul class="mainmenu nav sf-menu">
-                                    <li class="active">
-                                        <a href="">Inicio</a>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">Inicio</a>
                                     </li>
 
                                     <li>
-                                        <a href="">Acerca de</a>
+                                        <a href="@Url.Action("Index", "Acerca")">Acciones</a>
                                     </li>
 
-                                    <li>
-                                        <a href="">Acciones</a>
-                                    </li>
+                                  
 
                                     <!-- blog -->
                                     <li>
-                                        <a href="">Blog</a>
+                                        <a href="@Url.Action("Index", "Noticias")">Noticias</a>
 
                                     </li>
                                     <!-- eof blog -->
                                     <!-- gallery -->
-                                    <li>
+                                    @*<li>
                                         <a href="">Eventos</a>
 
-                                    </li>
+                                    </li>*@
                                     <!-- eof Gallery -->
                                     <!-- shop -->
                                     <li>
-                                        <a href="">Capacitaciones</a>
+                                        <a href="@Url.Action("Index", "Capacitaciones")">Capacitaciones</a>
 
                                     </li>
 
                                     
                                     <!-- eof pages -->
                                     <!-- contacts -->
-                                    <li>
+                                    @*<li>
                                         <a href="">Contacto</a>
-                                    </li>
+                                    </li>*@
                                     <!-- eof contacts -->
 
                                 </ul>
@@ -144,11 +142,11 @@
                         </div>
                         <div class="col-lg-2 col-md-3 text-right nowrap hidden-md hidden-sm hidden-xs display_table_cell_md">
                             <div class="top_meta">
-                                <i class="fa fa-phone highlight"></i>
+                                @*<i class="fa fa-phone highlight"></i>
                                 <span class="vidaloka grey">1 (800) 253 76 84</span>
                                 <a href="#" class="search_modal_button">
                                     <i class="fa fa-search highlight"></i>
-                                </a>
+                                </a>*@
                             </div>
                         </div>
                     </div>
@@ -157,7 +155,7 @@
 
             <div class="">
                 @RenderBody()
-                <hr />
+            
 
             </div>
 

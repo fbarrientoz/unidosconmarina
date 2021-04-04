@@ -3,14 +3,26 @@
     ViewBag.Title = "index";
 }
 
+
 <section class="ls ms section_padding_top_100 section_padding_bottom_100">
     <div class="container">
-
+        <h3>Únete a la red Juventud Sindical</h3>
+        <hr />
+        <br />
         <div class="row">
+            <div class="col-md-12">
+                <p>
+                    El poder del cambio esta en nuestra <strong>Juventud</strong> Registrate para ser parte de la red Juventud ó envia un comentario  a Marina del Pilar.
+                </p>
 
-            <form class="shop-register" id="frmRegistro" enctype="multipart/form-data">
+            </div>
+        </div>
+     
 
-                <div class="col-sm-4">
+        <form class="shop-register" id="frmRegistro" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-md-4">
                     <div class="form-group validate-required" id="billing_first_name_field">
                         <label for="billing_first_name" class="control-label">
                             <span class="grey">Nombre</span>
@@ -19,6 +31,31 @@
 
                         <input type="text" class="form-control " name="nombre" id="nombre" placeholder="" value="">
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group validate-required" id="billing_last_name_field">
+                        <label for="billing_last_name" class="control-label">
+                            <span class="grey">Apellido paterno </span>
+                            <span class="required">*</span>
+                        </label>
+
+                        <input type="text" class="form-control " name="paterno" id="paterno" placeholder="" value="">
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group validate-required" id="billing_last_name_field">
+                        <label for="billing_last_name" class="control-label">
+                            <span class="grey">Apellido materno </span>
+                        </label>
+
+                        <input type="text" class="form-control " name="materno" id="materno" placeholder="" value="">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
 
                     <div class="form-group validate-required validate-phone" id="billing_phone_field">
                         <label for="billing_phone" class="control-label">
@@ -29,21 +66,8 @@
                         <input type="number" class="form-control " name="telefono" id="telefono" placeholder="numero casa" value="">
 
                     </div>
-
-
                 </div>
-
-                <div class="col-sm-4">
-                    <div class="form-group validate-required" id="billing_last_name_field">
-                        <label for="billing_last_name" class="control-label">
-                            <span class="grey">Apellido paterno </span>
-                            <span class="required">*</span>
-                        </label>
-
-                        <input type="text" class="form-control " name="paterno" id="paterno" placeholder="" value="">
-
-                    </div>
-
+                <div class="col-md-4">
                     <div class="form-group validate-required validate-phone" id="billing_phone_field">
                         <label for="billing_phone" class="control-label">
                             <span class="grey">Teléfono Celular</span>
@@ -53,17 +77,7 @@
 
                     </div>
                 </div>
-
-                <div class="col-sm-4">
-                    <div class="form-group validate-required" id="billing_last_name_field">
-                        <label for="billing_last_name" class="control-label">
-                            <span class="grey">Apellido materno </span>
-                        </label>
-
-                        <input type="text" class="form-control " name="materno" id="materno" placeholder="" value="">
-
-                    </div>
-
+                <div class="col-md-4">
                     <div class="form-group validate-required validate-email" id="billing_email_field">
                         <label for="billing_email" class="control-label">
                             <span class="grey">Correo electrónico </span>
@@ -73,12 +87,12 @@
                         <input type="email" class="form-control " name="email" id="email" placeholder="" value="">
 
                     </div>
-
                 </div>
 
+            </div>
 
-
-                <div class="col-sm-12">
+            <div class="row">
+                <div class="col-md-12">
                     <div class="form-group address-field validate-required" id="billing_address_fields">
                         <label for="billing_address_1" class="control-label">
                             <span class="grey">Dirección </span>
@@ -88,11 +102,11 @@
                         <input type="text" class="form-control " name="direccion" id="direccion" placeholder="Número / Calle / Colonia / Codigo Postal" value="">
 
                     </div>
-
                 </div>
 
-                <div class="col-sm-6">
-
+            </div>
+            <div class="row">
+                <div class="col-md-4">
                     <div class="form-group address-field validate-required validate-postcode" id="billing_postcode_field">
                         <label for="billing_postcode" class="control-label">
                             <span class="grey">RFC </span>
@@ -101,7 +115,8 @@
                         <input type="text" class="form-control " name="rfc" id="rfc" placeholder="clave RFC" value="">
 
                     </div>
-
+                </div>
+                <div class="col-md-4">
                     <div class="form-group validate-required validate-phone" id="billing_phone_field">
                         <label for="billing_phone" class="control-label">
                             <span class="grey">Clave Electoral</span>
@@ -110,7 +125,20 @@
                         <input type="text" class="form-control " name="claveElectoral" id="claveElectoral" placeholder="" value="">
 
                     </div>
+                </div>
+                <div class="col-md-4">
 
+                    <div class="form-group validate-required validate-fax" id="billing_fax_field">
+                        <label for="billing_fax" class="control-label">
+                            <span class="grey">CURP </span>
+                        </label>
+                        <input type="text" class="form-control " name="curp" id="curp" placeholder="clave curp" value="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div class="form-group address-field validate-required" id="billing_address_fields">
                         <label for="billing_address_1" class="control-label">
                             <span class="grey">Comentario</span>
@@ -118,9 +146,14 @@
                         <textarea rows="10" type="text" class="form-control " name="comentario" id="comentario" placeholder="Deja tu comentario y/o pregunta" value=""></textarea>
                     </div>
 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="billing_phone" class="control-label">
-                            <span class="grey">Votaras por Marina?</span>
+                            <span class="grey">¿Votaras por Marina del Pilar?</span>
                         </label>
                         <div class="radio">
                             <label>
@@ -132,9 +165,14 @@
                         </div>
 
                     </div>
+
+                </div>
+                <div class="col-md-4">
+
                     <div class="form-group">
-                        <label for="billing_phone" class="control-label">
-                            <span class="grey">Eres de Imss?</span>
+                        <label for="billing_state" class="control-label">
+                            <span class="grey">¿Eres trabajador IMSS? </span>
+                            <span class="required">*</span>
                         </label>
                         <div class="radio">
                             <label>
@@ -146,6 +184,16 @@
                         </div>
 
                     </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+
+            </div>
+            
+
+            <div class="row">
+                <div class="col-sm-6">
 
                     <div class="form-group">
                         <div class="checkbox">
@@ -154,38 +202,30 @@
                             </label>
                         </div>
                         <label for="billing_phone" class="control-label">
-                            <a target="_blank" href ="http://test.beetsool.com/Aviso de privacidad.pdf">Ver Aviso de privacidad</a>
+                            <a target="_blank" href="http://test.beetsool.com/Aviso de privacidad.pdf">Ver Aviso de privacidad</a>
                         </label>
-
-
                     </div>
 
-
                 </div>
 
+            </div>
+        
 
 
-                <div class="col-sm-6">
-
-                    <div class="form-group validate-required validate-fax" id="billing_fax_field">
-                        <label for="billing_fax" class="control-label">
-                            <span class="grey">CURP </span>
-                        </label>
-                        <input type="text" class="form-control " name="curp" id="curp" placeholder="clave curp" value="">
-                    </div>
-                </div>
-
-                <div class="col-sm-12">
-
-                    <button type="button" class="theme_button wide_button color1" onclick="save('@Url.Action("RegistroJson", "Registro")',document.getElementById('aviso'));">Registrase Ahora</button>
-                    <button type="reset" class="theme_button wide_button">Limpiar Formulario</button>
-
-                </div>
-
-            </form>
 
 
-        </div>
+
+            <div class="col-sm-12">
+
+                <button type="button" class="theme_button wide_button color1" onclick="save('@Url.Action("RegistroJson", "Registro")',document.getElementById('aviso'));">Registrase Ahora</button>
+                <button type="reset" class="theme_button wide_button">Limpiar Formulario</button>
+
+            </div>
+
+        </form>
+
+
+      
     </div>
 </section>
 

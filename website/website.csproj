@@ -170,9 +170,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AcercaController.cs" />
+    <Compile Include="Controllers\CapacitacionesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\SecretarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -285,6 +289,7 @@
     <Content Include="Content\images\banner_slide01.jpg" />
     <Content Include="Content\images\banner_slide02.jpg" />
     <Content Include="Content\images\banner_slide03.jpg" />
+    <Content Include="Content\images\banner_slide04.jpg" />
     <Content Include="Content\images\blog-next.jpg" />
     <Content Include="Content\images\blog-prev.jpg" />
     <Content Include="Content\images\blog_slide1.jpg" />
@@ -337,6 +342,8 @@
     <Content Include="Content\images\recent_post01.jpg" />
     <Content Include="Content\images\recent_post02.jpg" />
     <Content Include="Content\images\recent_post03.jpg" />
+    <Content Include="Content\images\redcapacitacion.jpg" />
+    <Content Include="Content\images\redJuventudSindical.jpg" />
     <Content Include="Content\images\shop\01.png" />
     <Content Include="Content\images\shop\02.png" />
     <Content Include="Content\images\shop\03.png" />
@@ -346,6 +353,7 @@
     <Content Include="Content\images\side-image.jpg" />
     <Content Include="Content\images\signature.jpg" />
     <Content Include="Content\images\slide01.png" />
+    <Content Include="Content\images\slide02.jpg" />
     <Content Include="Content\images\slide02.png" />
     <Content Include="Content\images\slide03.png" />
     <Content Include="Content\images\small_post01.jpg" />
@@ -629,6 +637,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
+    <Content Include="Views\Acerca\Index.cshtml" />
+    <Content Include="Views\Acerca\marina_del_pilar.cshtml" />
+    <Content Include="Views\Capacitaciones\Index.cshtml" />
+    <Content Include="Views\Noticias\Index.cshtml" />
+    <Content Include="Views\Secretario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
