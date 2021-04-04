@@ -23,7 +23,7 @@
         <AssociationConnector Association="UnidosconmarinaModel.FK_Banners_AspNetUsers1" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_Noticias_AspNetUsers" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_Noticias_AspNetUsers1" />
-        <EntityTypeShape EntityType="UnidosconmarinaModel.TipoVotante" Width="1.5" PointX="0.5" PointY="6.25" />
+        <EntityTypeShape EntityType="UnidosconmarinaModel.TipoVotante" Width="1.5" PointX="0.625" PointY="7" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_Padron_TipoVotante" />
         <AssociationConnector Association="UnidosconmarinaModel.FK_HistorialContacto_AspNetUsers" />
       </Diagram>

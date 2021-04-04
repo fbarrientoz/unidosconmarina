@@ -147,6 +147,7 @@
           <Property Name="email" Type="varchar" MaxLength="70" />
           <Property Name="registroCompleto" Type="bit" />
           <Property Name="esImss" Type="bit" Nullable="false" />
+          <Property Name="redJuventud" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoVotante">
           <Key>
@@ -430,6 +431,7 @@
           <NavigationProperty Name="TipoVotante" Relationship="UnidosconmarinaModel.FK_Padron_TipoVotante" FromRole="Padron" ToRole="TipoVotante" />
           <Property Name="registroCompleto" Type="Boolean" />
           <Property Name="esImss" Type="Boolean" Nullable="false" />
+          <Property Name="redJuventud" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_HistorialContacto_Padron">
           <End Role="Padron" Type="Self.Padron" Multiplicity="1" />
@@ -743,6 +745,7 @@
           <EntitySetMapping Name="Padrons">
             <EntityTypeMapping TypeName="UnidosconmarinaModel.Padron">
               <MappingFragment StoreEntitySet="Padron">
+                <ScalarProperty Name="redJuventud" ColumnName="redJuventud" />
                 <ScalarProperty Name="esImss" ColumnName="esImss" />
                 <ScalarProperty Name="registroCompleto" ColumnName="registroCompleto" />
                 <ScalarProperty Name="email" ColumnName="email" />

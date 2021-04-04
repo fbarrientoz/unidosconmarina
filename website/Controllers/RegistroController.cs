@@ -203,6 +203,11 @@ namespace website.Controllers
 
                 data.fechaRegistro = DateTime.Now.Date;
 
+                if(data.esImss == false)
+                {
+                    data.redJuventud = false;
+                }
+
                 db.Padrons.Add(data);
                 await db.SaveChangesAsync();
 
