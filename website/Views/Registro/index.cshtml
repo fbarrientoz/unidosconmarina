@@ -147,6 +147,19 @@
 
                     </div>
 
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="form-control " name="aviso" id="aviso" value="1"> Acepto aviso de privacidad
+                            </label>
+                        </div>
+                        <label for="billing_phone" class="control-label">
+                            <a target="_blank" href ="http://test.beetsool.com/Aviso de privacidad.pdf">Ver Aviso de privacidad</a>
+                        </label>
+
+
+                    </div>
+
 
                 </div>
 
@@ -164,7 +177,7 @@
 
                 <div class="col-sm-12">
 
-                    <button type="button" class="theme_button wide_button color1" onclick="save('@Url.Action("RegistroJson", "Registro")');">Registrase Ahora</button>
+                    <button type="button" class="theme_button wide_button color1" onclick="save('@Url.Action("RegistroJson", "Registro")',document.getElementById('aviso'));">Registrase Ahora</button>
                     <button type="reset" class="theme_button wide_button">Limpiar Formulario</button>
 
                 </div>
@@ -177,55 +190,69 @@
 </section>
 
 <script>
-    function save(url) {
-    Swal.fire({
-        title: 'Procesando!',
-        html: '',
-        onBeforeOpen: () => {
-            Swal.showLoading()
-            return new Promise((resolve) => {
-                var formData = new FormData($('form#frmRegistro')[0]);
+    function save(url, aviso) {
 
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    data: formData,
-                    dataType: 'json',
-                    contentType: false,// "multipart/form-data",
-                    processData: false,
-                    success: function (result) {
-                        if (result.accion) {
-                            Swal.fire({
-                                title: 'Realizado!',
-                                text: 'Se ha agregado correctamente',
-                                type: 'success',
-                                onClose: () => {
-                                    window.location.reload();
-                                }
-                            });
-                        } 
-                        else
-                            Swal.fire('Ops!', result.Msg, 'error');
-                    },
-                    error: function (error) {
-                        Swal.fire('Ops!', 'No se pudo completar la operación.', 'error');
-                    }
-                });
-
-            })
-        },
-    }).then((result) => {
-      
-        if (result.value) {
+        if (!aviso.checked) {
             Swal.fire({
-                title: 'Realizado!',
-                text: 'Se ha agregado correctamente',
-                type: 'success',
-                onClose: () => {
-                    window.location.reload();
+                title: 'Debe aceptar el Aviso de Privacidad',
+                text: "",
+                type: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ok'
+            });
+        } else {
+            Swal.fire({
+                title: 'Procesando!',
+                html: '',
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    return new Promise((resolve) => {
+                        var formData = new FormData($('form#frmRegistro')[0]);
+
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: formData,
+                            dataType: 'json',
+                            contentType: false,// "multipart/form-data",
+                            processData: false,
+                            success: function (result) {
+                                if (result.accion) {
+                                    Swal.fire({
+                                        title: 'Realizado!',
+                                        text: 'Se ha agregado correctamente',
+                                        type: 'success',
+                                        onClose: () => {
+                                            window.location.reload();
+                                        }
+                                    });
+                                } 
+                                else
+                                    Swal.fire('Ops!', result.Msg, 'error');
+                            },
+                            error: function (error) {
+                                Swal.fire('Ops!', 'No se pudo completar la operación.', 'error');
+                            }
+                        });
+
+                    })
+                },
+            }).then((result) => {
+      
+                if (result.value) {
+                    Swal.fire({
+                        title: 'Realizado!',
+                        text: 'Se ha agregado correctamente',
+                        type: 'success',
+                        onClose: () => {
+                            window.location.reload();
+                        }
+                    });
                 }
             });
+
         }
-    });
 }
 </script>
