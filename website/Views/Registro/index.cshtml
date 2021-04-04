@@ -17,7 +17,7 @@
 
             </div>
         </div>
-     
+
 
         <form class="shop-register" id="frmRegistro" enctype="multipart/form-data">
 
@@ -150,7 +150,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="billing_phone" class="control-label">
                             <span class="grey">¿Votaras por Marina del Pilar?</span>
@@ -167,7 +167,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
 
                     <div class="form-group">
                         <label for="billing_state" class="control-label">
@@ -179,18 +179,32 @@
                                 <input type="radio" class="form-control " name="esImss" id="esImss" value="true"> Si
                             </label>
                             <label>
-                                <input type="radio" class="form-control " name="esImss" id="esImss" value="false"> No
+                                <input type="radio" class="form-control " name="esImss" id="esImss2" value="false"> No
                             </label>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6" id="redjuvenil" style="display:none" ;>
+                    <div class="form-group">
+                        <label for="billing_state" class="control-label">
+                            <span class="grey">¿Quieres ser parte de la Red Juventud Sindical? </span>
+                            <span class="required">*</span>
+                        </label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" class="form-control " name="redJuventud" id="redJuventud" value="true"> Si
+                            </label>
+                            <label>
+                                <input type="radio" class="form-control " name="redJuventud" id="redJuventud" value="false" checked> No
+                            </label>
+                        </div>
 
+                    </div>
                 </div>
 
             </div>
-            
+
 
             <div class="row">
                 <div class="col-sm-6">
@@ -201,15 +215,15 @@
                                 <input type="checkbox" class="form-control " name="aviso" id="aviso" value="1"> Acepto aviso de privacidad
                             </label>
                         </div>
-                        <label for="billing_phone" class="control-label">
-                            <a target="_blank" href="http://test.beetsool.com/Aviso de privacidad.pdf">Ver Aviso de privacidad</a>
+                        <label for="billing_phone" class="control-label" data-toggle="modal" data-target="#modal-agreement">
+                            <a>Ver Aviso de Privacidad</a>
                         </label>
                     </div>
 
                 </div>
 
             </div>
-        
+
 
 
 
@@ -225,9 +239,36 @@
         </form>
 
 
-      
+
     </div>
 </section>
+
+
+<div class="modal fade" id="modal-agreement">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <object type="application/pdf" data="~/Content/pdf/Avisodeprivacidad.pdf" width="100%" height="500" style="height: 85vh;">No Support</object>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    $(document).ready(function () {
+        $("input[id='esImss']").click(function () {
+            $('div#redjuvenil').show();
+        });
+        $("input[id='esImss2']").click(function () {
+            $('div#redjuvenil').hide();
+
+        });
+
+    });
+</script>
 
 <script>
     function save(url, aviso) {
@@ -268,19 +309,19 @@
                                             window.location.reload();
                                         }
                                     });
-                                } 
+                                }
                                 else
                                     Swal.fire('Ops!', result.Msg, 'error');
                             },
                             error: function (error) {
-                                Swal.fire('Ops!', 'No se pudo completar la operación.', 'error');
+                                Swal.fire('Hubo un problema!', 'Hacen falta llenar campos.', 'error');
                             }
                         });
 
                     })
                 },
             }).then((result) => {
-      
+
                 if (result.value) {
                     Swal.fire({
                         title: 'Realizado!',
@@ -294,5 +335,5 @@
             });
 
         }
-}
+    }
 </script>

@@ -39,6 +39,7 @@ namespace UPM.Entities
         public string email { get; set; }
         public Nullable<bool> registroCompleto { get; set; }
         public bool esImss { get; set; }
+        public bool redJuventud { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistorialContacto> HistorialContactoes { get; set; }
