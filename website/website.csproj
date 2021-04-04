@@ -352,10 +352,12 @@
     <Content Include="Content\images\shop\06.png" />
     <Content Include="Content\images\side-image.jpg" />
     <Content Include="Content\images\signature.jpg" />
+    <Content Include="Content\images\slide01.jpg" />
     <Content Include="Content\images\slide01.png" />
     <Content Include="Content\images\slide02.jpg" />
     <Content Include="Content\images\slide02.png" />
     <Content Include="Content\images\slide03.png" />
+    <Content Include="Content\images\slide05.jpg" />
     <Content Include="Content\images\small_post01.jpg" />
     <Content Include="Content\images\small_post02.jpg" />
     <Content Include="Content\images\small_post03.jpg" />
