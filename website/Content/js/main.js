@@ -337,9 +337,9 @@ function documentReadyInit() {
 	}
 
 	var electionDate = new Date();
-	electionDate.setTime(electionDate.getTime() + 257 * 86400000 + 21 * 3600000 + 43 * 60000);
+	electionDate.setTime(electionDate.getTime() + 61 * 86400000 + 21 * 3600000 + 43 * 60000);
 	jQuery('#election-countdown').countdown({
-		labels: ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Sec'],
+		labels: ['Años', 'Mes', 'Semanas', 'Dias', 'Horas', 'Min', 'Seg'],
 		until: electionDate, 
 		format: 'dHM'});
 

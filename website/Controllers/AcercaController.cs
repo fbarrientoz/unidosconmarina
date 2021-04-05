@@ -13,5 +13,11 @@ namespace website.Controllers
         {
             return View();
         }
+
+        public ActionResult marina_del_pilar()
+        {
+            return View();
+        }
+
     }
 }
