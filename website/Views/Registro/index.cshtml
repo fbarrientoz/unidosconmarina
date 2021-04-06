@@ -160,7 +160,10 @@
                                 <input type="radio" class="form-control " name="votante" id="votante" value="1"> Si
                             </label>
                             <label>
-                                <input type="radio" class="form-control " name="votante" id="votante" value="0"> No
+                                <input type="radio" class="form-control " name="votante" id="votante" value="2"> No
+                            </label>
+                            <label>
+                                <input type="radio" class="form-control " name="votante" id="votante" value="3"> Indeciso
                             </label>
                         </div>
 
@@ -303,10 +306,10 @@
                                 if (result.accion) {
                                     Swal.fire({
                                         title: 'Realizado!',
-                                        text: 'Se ha agregado correctamente',
+                                        text: 'Se ha registrado correctamente',
                                         type: 'success',
                                         onClose: () => {
-                                            window.location.reload();
+                                           window.location.href = 'http://unidosconmarina.com/';
                                         }
                                     });
                                 }

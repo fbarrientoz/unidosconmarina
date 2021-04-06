@@ -11,6 +11,18 @@
     Html.EnableClientValidation(true);
     Html.EnableUnobtrusiveJavaScript(true);
 }
+
+@{
+    List<SelectListItem> esImss = new List<SelectListItem>();
+
+        esImss.Add(new SelectListItem() { Text = "NO", Value = "false"});
+        esImss.Add(new SelectListItem() { Text = "SI", Value = "true"});
+
+    List<SelectListItem> redJuventud = new List<SelectListItem>();
+
+       redJuventud.Add(new SelectListItem() { Text = "NO", Value = "false"});
+       redJuventud.Add(new SelectListItem() { Text = "SI", Value = "true"});
+}
 begin:: Subheader -->
 <div class="kt-subheader   kt-grid__item" id="kt_subheader">
     <div class="kt-subheader__main">
@@ -193,10 +205,40 @@ begin:: Subheader -->
                                 @Html.ValidationMessageFor(model => model.votante, "", new { @class = "text-danger" })
                             </div>
                             <span style="padding-left:10px; font-size:12px;">
-                                Es votante?
+                                ¿Votara por Marina?
                             </span>
                         </div>
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div>
+                                <div class="">
+                                    @Html.DropDownListFor(model => model.esImss, esImss, htmlAttributes: new { @class = "form-control", id = "imss" })
+                                    @Html.ValidationMessageFor(model => model.esImss, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px; font-size:12px;">
+                                    ¿Es trabajador IMSS?
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <div>
+                                <div class="">
+                                    @Html.DropDownListFor(model => model.redJuventud, redJuventud, htmlAttributes: new { @class = "form-control", id = "juventud", @style="display:none" })
+                                    @Html.ValidationMessageFor(model => model.redJuventud, "", new { @class = "text-danger" })
+                                </div>
+                                <span style="padding-left:10px;display:none;" font-size:12px;" id="jjuventud">
+                                    ¿Quiere ser parte de la Red Juventud Sindical?
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -230,4 +272,27 @@ begin:: Subheader -->
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/assets/js/programacion/list.js"></script>
+
+    <script>
+        $("select#imss").change(function () {
+        var valor = $(this).val();
+        showUbicacion(valor);
+    });
+
+    function showUbicacion(tipo) {
+        switch (tipo) {
+            case 'true':
+                $('#juventud').show();
+                $('#jjuventud').show();
+                break;
+
+            case 'false':
+                document.getElementById('juventud').value = 'false';
+                $('#juventud').hide();
+                $('#jjuventud').hide();
+                break;
+        }
+    }
+    </script>
+
 }

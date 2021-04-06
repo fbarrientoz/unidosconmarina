@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using UPM.Entities;
 using webadmin.Models;
+using Microsoft.AspNet.Identity;
 
 namespace webadmin.Controllers
 {
@@ -49,7 +50,7 @@ namespace webadmin.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,nombre,paterno,materno,telefono,celular,direccion,comentario,rfc,curp,claveElectoral,votante,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaUpdate,email,registroCompleto")] Padron padron)
+        public ActionResult Create([Bind(Include = "Id,nombre,paterno,materno,telefono,celular,direccion,comentario,rfc,curp,claveElectoral,votante,usuarioRegistro,usuarioUpdate,fechaRegistro,fechaUpdate,email,registroCompleto,esImss,redJuventud")] Padron padron)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +62,8 @@ namespace webadmin.Controllers
                 {
                     padron.registroCompleto = false;
                 }
+                padron.fechaRegistro = DateTime.Now.Date;
+                padron.usuarioRegistro = User.Identity.GetUserId();
                 db.Padrons.Add(padron);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -132,21 +135,17 @@ namespace webadmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                Padron padron = new Padron();
 
-                if (padron.nombre != null && padron.paterno != null && padron.telefono != null && padron.celular != null && padron.direccion != null && padron.rfc != null && padron.curp != null && padron.claveElectoral != null && padron.email != null)
+                if (phistorial.padron.nombre != null && phistorial.padron.paterno != null && phistorial.padron.telefono != null && phistorial.padron.celular != null && phistorial.padron.direccion != null && phistorial.padron.rfc != null && phistorial.padron.curp != null && phistorial.padron.claveElectoral != null && phistorial.padron.email != null)
                 {
-                    padron.registroCompleto = true;
+                    phistorial.padron.registroCompleto = true;
                 }
                 else
                 {
-                    padron.registroCompleto = false;
+                    phistorial.padron.registroCompleto = false;
                 }
-
-                padron.usuarioRegistro = null;
-                padron.usuarioUpdate = null;
-                padron.fechaRegistro = null;
-                padron.fechaUpdate = null;
+                phistorial.padron.fechaUpdate = DateTime.Now.Date;
+                phistorial.padron.usuarioUpdate = User.Identity.GetUserId();
                 db.Entry(phistorial.padron).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
