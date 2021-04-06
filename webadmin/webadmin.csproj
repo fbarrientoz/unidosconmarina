@@ -6220,6 +6220,7 @@
     <Content Include="assets\vendors\general\wnumb\package.json" />
     <Content Include="assets\vendors\general\wnumb\README.md" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ej\common\ej.core.min.js" />
     <Content Include="Scripts\ej\common\ej.data.min.js" />
