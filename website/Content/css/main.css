@@ -1608,6 +1608,18 @@ p > [class*="rt-icon"] {
 			background-color: #a2162b !important;
 		}
 
+	.theme_buttons.color1 a,
+	.theme_button.color4 {
+		color: #ffffff !important;
+		background-color: #fec400 !important;
+	}
+
+		.theme_buttons.color1 a:hover,
+		.theme_button.color4:hover {
+			color: #ffffff !important;
+			background-color: #a2162b !important;
+		}
+
 	.theme_buttons.color2 a,
 	.theme_button.color2 {
 		color: #ffffff !important;
@@ -6876,6 +6888,11 @@ aside .widget_tag_cloud a {
 
 .rounded {
 	border-radius: 3px;
+}
+
+.rounded-bg {
+	border-radius: 3px;
+	background-color:#808080 !important;
 }
 
 .bottom-rounded {
