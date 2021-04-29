@@ -65,9 +65,10 @@
                             <th class="all">Nombre</th>
                             <th class="all">Clave Electoral</th>
                             <th class="all">Telefóno</th>
+                            <th class="all">¿Es Votante?</th>
                             <th class="all">Celular</th>
-                            <th class="all">Es Votante?</th>
                             <th class="all">Registro Completo?</th>
+                            <th class="all">¿Es trabajador IMSS?</th>
                             <th class="all">Pregunta - Comentario</th>
                             <th class="all">Editar</th>
                             <th class="all">Eliminar</th>
@@ -105,6 +106,19 @@
                             <td data-info="Registro completo">
 
                                 @if (item.registroCompleto == true)
+                                {
+                                    <a>SI</a>
+                                }
+                                else
+                                {
+                                    <a>NO</a>
+                                }
+
+
+                            </td>
+                            <td data-info="Es imss">
+
+                                @if (item.esImss == true)
                                 {
                                     <a>SI</a>
                                 }
